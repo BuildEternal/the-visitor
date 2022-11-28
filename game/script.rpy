@@ -1,14 +1,17 @@
-﻿# The script of the game goes in this file.
+﻿# Characters
 
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
+define character.sirena = Character("Sirena", color="#ffa64d")
 
-define character.sirena = Character("Sirena", color = "#ffa64d")
+define character.me = Character("[player_name]", color="#4d4dff")
 
-define character.me = Character("Me", color = "#4d4dff")
+# Scenes
 
+# You, [Player Character], wake up to find yourself wandering a foggy street, with no memory of how you got there.
+# Almost immediately, you encounter a strange girl with with black hair [Sirena], who almost seems—disappointed. It
+# seems she was looking to "summon" somebody else here, but it didn't work; and now, here you are.
 
-# The game starts here.
+# Still, she doesn't know how to banish you immediately—so to kill time while the two of you wait for the "dream" to
+# kick you out, she decides to ask you a couple odd, philosophical questions…
 
 label start:
 

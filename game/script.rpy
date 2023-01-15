@@ -2,7 +2,7 @@
 
 define character.sirena = Character("Sirena", color="#ffa64d")
 
-define character.me = Character("[player_name]", color="#4d4dff")
+define character.me = Character("Me", color="#4d4dff")
 
 # Scenes
 

@@ -15,13 +15,15 @@ define character.me = Character("Me", color="#4d4dff")
 
 label start:
 
+    with dissolve
+
     "There is a question we all learn to ask ourselves, eventually."
 
     "Anyone who's made it through the first decade and a half of their life knows the question, more or less:"
 
-    "Who am I? What am I doing here?"
+    "Who am I?{w=.5} What am I doing here?"
 
-    "And, why?"
+    "And,{w=.5} why?"
 
     "Some will argue that this makes no sense. That those are three questions, not one."
 
@@ -65,6 +67,6 @@ label start:
     sirena "…Ahaha." (name = "???")
 
     scene black
-    with dissolve
+    with Dissolve(2)
 
     return

@@ -257,6 +257,7 @@ screen quick_menu():
             textbutton _("Q.Save") action QuickSave()
             textbutton _("Q.Load") action QuickLoad()
             textbutton _("Prefs") action ShowMenu('preferences')
+            textbutton _("Menu") action ShowMenu()
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -287,11 +288,18 @@ style quick_button_text:
 
 screen navigation():
 
+    tag menu
+
+    if main_menu:
+        add gui.main_menu_background
+    else:
+        add gui.game_menu_background
+
     vbox:
         style_prefix "navigation"
 
-        xpos gui.navigation_xpos
-        yalign 0.5
+        xalign 0.5
+        yalign (0.75 if main_menu else 0.5)
 
         spacing gui.navigation_spacing
 
@@ -324,11 +332,27 @@ screen navigation():
             ## Help isn't necessary or relevant to mobile devices.
             textbutton _("Help") action ShowMenu("help")
 
+        if not main_menu:
+
+            textbutton _("Return") action Return()
+
         if renpy.variant("pc"):
 
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
             textbutton _("Quit") action Quit(confirm=not main_menu)
+
+
+    if gui.show_name and main_menu:
+
+        vbox:
+            style "main_menu_vbox"
+
+            text "[config.name!t]":
+                style "main_menu_title"
+
+            text "[config.version]":
+                style "main_menu_version"
 
 
 style navigation_button is gui_button
@@ -353,26 +377,26 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background
+    # add gui.main_menu_background
 
     ## This empty frame darkens the main menu.
-    frame:
-        style "main_menu_frame"
+    # frame:
+    #     style "main_menu_frame"
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
     use navigation
 
-    if gui.show_name:
+    # if gui.show_name:
 
-        vbox:
-            style "main_menu_vbox"
+    #     vbox:
+    #         style "main_menu_vbox"
 
-            text "[config.name!t]":
-                style "main_menu_title"
+    #         text "[config.name!t]":
+    #             style "main_menu_title"
 
-            text "[config.version]":
-                style "main_menu_version"
+    #         text "[config.version]":
+    #             style "main_menu_version"
 
 
 style main_menu_frame is empty
@@ -467,12 +491,13 @@ screen game_menu(title, scroll=None, yinitial=0.0):
 
                     transclude
 
-    use navigation
-
     textbutton _("Return"):
         style "return_button"
 
-        action Return()
+        if main_menu:
+            action Return()
+        else:
+            action ShowMenu()
 
     label title
 

@@ -23,7 +23,7 @@ label start:
 
     "Who am I?{w=.5} What am I doing here?"
 
-    "And,{w=.5} why?"
+    "And, why?"
 
     "Some will argue that this makes no sense. That those are three questions, not one."
 

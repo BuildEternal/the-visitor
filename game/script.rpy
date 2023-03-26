@@ -14,12 +14,13 @@ define character.me = Character("Me", color="#4d4dff")
 # kick you out, she decides to ask you a couple odd, philosophical questions…
 
 label start:
+    with dissolve
 
     "There is a question we all learn to ask ourselves, eventually."
 
     "Anyone who's made it through the first decade and a half of their life knows the question, more or less:"
 
-    "Who am I? What am I doing here?"
+    "Who am I?{w=.5} What am I doing here?"
 
     "And, why?"
 
@@ -30,17 +31,17 @@ label start:
     scene bg marina fog
     with dissolve
 
-    me "..."
+    me "…"
 
-    me "..."
+    me "…"
 
-    me "..."
+    me "…"
 
-    me "What..."
+    me "What…"
 
     "An unfamiliar scene. The fog hangs thick and heavy over a street I don't recognize—shrouding everything in a humid, gloomy {i}white{/i}."
 
-    me "(Palm trees...)"
+    me "(Palm trees…)"
 
     me "(I didn't know we had palm trees in my city.)"
 
@@ -52,7 +53,7 @@ label start:
 
     #TODO: Have the sprite resized to not need to be scaled up.
     show sirena solemn:
-        zoom 1.5
+        zoom 1.425
         xalign 0.25 yalign 1.0
     with dissolve
 
@@ -64,7 +65,44 @@ label start:
 
     sirena "…Ahaha." (name = "???")
 
+    menu: 
+        "What's so funny?":
+            show sirena solemn
+
+            sirena "Oh, nothing. I just…" (name = "???")
+
+            show sirena wry
+            
+            sirena "…Well, it's not all that funny, really." (name = "???")
+
+            sirena "I suppose I'm just tired." (name = "???")
+        "{i}Say nothing.{/i}":
+            show sirena solemn
+
+            sirena "…" (name = "???")
+
+            me "…"
+
+            sirena "…Sorry." (name = "???")
+    
+    "We lapse into an awkward silence."
+
+    sirena "…" (name = "???")
+
+    sirena "Actually, if it isn't too much trouble…" (name = "???")
+
+    show sirena:
+        ease 0.5:
+            xalign 0.5 yalign 1.0
+            zoom 1.5
+    
+    pause 0.5
+
+    sirena "…could I have your name?" (name = "???")
+
+    $ player_name = renpy.input("{i}Enter your name:{/i}", length=20)
+
     scene black
-    with dissolve
+    with Dissolve(2)
 
     return

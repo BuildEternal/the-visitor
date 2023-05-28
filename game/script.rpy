@@ -51,9 +51,8 @@ label start:
 
     "(Her footsteps are cold, and silent—like a tomb that's lost its echo.)"
 
-    #TODO: Have the sprite resized to not need to be scaled up.
     show sirena solemn:
-        zoom 1.425
+        zoom 0.95
         xalign 0.25 yalign 1.0
     with dissolve
 
@@ -94,13 +93,51 @@ label start:
     show sirena:
         ease 0.5:
             xalign 0.5 yalign 1.0
-            zoom 1.5
+            zoom 1
     
     pause 0.5
 
     sirena "…could I have your name?" (name = "???")
 
     $ player_name = renpy.input("{i}Enter your name:{/i}", length=20)
+
+    sirena "Thanks. Nice to meet you, [player_name]. Although we won't meet for long." (name = "???")
+
+    menu:
+        "And, your name?":
+            pass
+
+    show sirena solemn # TODO: Sirena looks somewhat antsy here
+
+    sirena "Oh." (name = "???")
+
+    sirena "It's Sirena.{w} Sirena Agaforth."
+
+    me "…"
+
+    sirena "…"
+
+    me "So… why {i}are{/i} you here, anyway?{w} And, where am I?"
+
+    sirena "Huh? This is a dream.{w} Yours, specifically."
+
+    sirena "So, I don't know where we are…"
+
+    me "Uh-huh. I'll take your word for it."
+
+    me "(This whole place has a surreal-like quality, anyway. And I don't feel cold at all.)"
+
+    "{cps=*0.5}Sirena hasn't answered your other question.{/cps}"
+
+    "Pry a little?"
+
+    menu:
+        "Ask her—again—why she's here.":
+            pass
+        "Say nothing.":
+            pass
+        "Change the subject.":
+            pass
 
     scene black
     with Dissolve(2)

@@ -122,3 +122,7 @@ CubismSdkForNative-4-*.zip
 # Works in progress, throwaway scripts, etc.
 /scratch
 /*-dists
+
+# Secret files.
+android.keystore
+bundle.keystore

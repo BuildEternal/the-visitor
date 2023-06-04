@@ -176,7 +176,7 @@ label start:
 
             sirena "{cps=*0.5}Goodnight, [player_name].{/cps}"
 
-            call ending pass (end="BAD ENDING 1")
+            call ending pass (end="BAD ENDING 1") from _call_ending
             
             return
         "{i}Change the subject.{/i}":

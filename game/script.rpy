@@ -92,7 +92,8 @@ label start:
 
     show sirena:
         ease 0.5:
-            xalign 0.5 yalign 1.0
+            xalign 0.5
+            yalign 1.0
             zoom 1
     
     pause 0.5
@@ -132,14 +133,78 @@ label start:
     "Pry a little?"
 
     menu:
-        "Ask her—again—why she's here.":
-            pass
-        "Say nothing.":
-            pass
-        "Change the subject.":
+        "{i}Ask her—again—why she's here.{/i}":
+            sirena "I was looking for…someone else.{w} Took a wrong turn, I suppose."
+
+            me "That's all?"
+
+            sirena "That's all."
+
+            me "(Somebody else, huh…)"
+
+            me "(I wonder who?)"
+        "{i}Say nothing.{/i}":
+            pause 2.0
+
+            sirena "Mhm…{w} Well, I suppose that's my cue to go."
+
+            me "Cue?{w} What cue?"
+
+            sirena "My apologies for interrupting your sleep."
+
+            sirena "But, don't worry. You won't remember me in the morning…{w} I promise."
+
+            me "Shit, wait! Don't go yet.{w} I'm still confused—{w=0.5}{nw}"
+
+            hide sirena
+
+            "{w=1.0}{cps=*0.3}{sc}Sirena takes out a knife.{/sc}{/cps}{w=2.0}{nw}" (
+                advance = False, slow_abortable = False
+            )
+
+            me "…!"
+
+            window hide
+
+            $ renpy.pause(2.0, hard=True)
+
+            show sirena wry: # TODO: Smiley sprite :)
+                xalign 0.5
+                zoom 2
+
+            $ renpy.pause(2.0, hard=True)
+
+            sirena "{cps=*0.5}Goodnight, [player_name].{/cps}"
+
+            call ending pass (end="BAD ENDING 1")
+            
+            return
+        "{i}Change the subject.{/i}":
             pass
 
     scene black
-    with Dissolve(2)
+    with Dissolve(1)
+
+    return
+
+image ending_text = ParameterizedText(
+    xalign = 0.5,
+    yalign = 0.5,
+    slow_cps=True,
+    slow_cps_multiplier=0.5,
+    slow_abortable=False
+)
+
+label ending(end="GAME OVER"):
+    show black
+
+    pause 2.0
+
+    show ending_text "{color=#f00}" + end + "{/color}"
+
+    $ renpy.pause(5.0, hard=True)
+
+    hide ending_text
+    with Dissolve(1)
 
     return
